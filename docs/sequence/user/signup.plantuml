@@ -1,0 +1,17 @@
+@startuml
+participant User
+participant Client
+participant Server
+database Database
+
+User -> Client: infor register
+Client -> Server: send register request (username, email, password)
+Server -> Database: Check login information
+Database --> Server: Returns test results
+alt Valid information
+    Server --> Client: Returns a success message
+else Invalid information
+    Server --> Client: Returns an error message
+end
+
+@enduml
